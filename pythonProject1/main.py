@@ -34,11 +34,11 @@ def foo3(n, m):
     sum2 = 0
     def fooSum():
         sum = 0
-        for i in range(1, n):
-            for j in range(1, m):
+        for i in range(1, n+1):
+            for j in range(1, m+1):
                 sum+=50*(math.log(i)+math.log(j)-14)
         return sum
-    for i in range(1, n):
+    for i in range(1, n+1):
         sum2+=80*i**5+math.sin(i)
     result = fooSum() - sum2
     return result
