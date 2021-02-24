@@ -1,29 +1,27 @@
 import math
 
 
-# def f11(x, y, z):
-#     first = (math.exp()**z - math.cos(y)) / (z + ((x ** 2) / 36) - 79)
+def f11(x, y, z):
+    first = ((math.e**z - math.cos(y)) / (z + ((x ** 2) / 36) - 79))
+    firstSqrt = math.sqrt(first)
+    second = ((math.cos(x) + (y ** 4) - 43) / (
+            (56 * y) - (12 * y ** 6)))
+    third = (math.tan(x) + (26 * x ** 7))
+    return (firstSqrt + second - third);
+
+# def f111(x, y, z):
+#     first = (math.exp(z) - math.cos(y)) / z + ((x ** 2) / 36) - 79
 #     if first < 0:
 #         first = abs(first)
 #     firstSqrt = math.sqrt(first)
 #     second = ((math.cos(x) + y ** 4 - 43) / (
 #                 56 * y - 12 * y ** 6))
 #     third = (math.tan(x) + 26 * x ** 7)
-#     return (firstSqrt + second - third);
+#     return (((math.e**z - math.cos(y)) / (z + ((x ** 2) / 36) - 79)) + (((math.cos(x) + y ** 4 - 43) / (56 * y - 12 * y ** 6))) - ((math.tan(x) + 26 * x ** 7)))
 
-def f11(x, y, z):
-    first = (math.exp(z) - math.cos(y)) / z + ((x ** 2) / 36) - 79
-    if first < 0:
-        first = abs(first)
-    firstSqrt = math.sqrt(first)
-    second = ((math.cos(x) + y ** 4 - 43) / (
-                56 * y - 12 * y ** 6))
-    third = (math.tan(x) + 26 * x ** 7)
-    return ((math.e**z - math.cos(y)) / (z + ((x ** 2) / 36) - 79))+ (((math.cos(x) + y ** 4 - 43) / (
-                56 * y - 12 * y ** 6))) - ((math.tan(x) + 26 * x ** 7))
-
-
-
+# 7def f10(x):
+#     return (27 * (x ** 5 + x ** 3) ** 2 + 57 * x ** 7 - (92 * x ** 7 - 66 * x ** 8)) / (
+#             ((x ** 4 / 42) - 4 * x ** 2 - 36) + math.tan(math.tan(x)) + 71 * x ** 6)
 def f12(x):
     if x < 94:
         return 87*x**6 - math.log(x) - 29*x**8
