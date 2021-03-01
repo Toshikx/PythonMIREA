@@ -40,7 +40,7 @@ def f22(number):
     b = b >> 16
     c = c >> 30
     numb = (a << 16) | (b << 2) | c
-    return hex(numb)
+    return numb
 #working transcoder in format of task
 def f23(table):
     #table function in progress
