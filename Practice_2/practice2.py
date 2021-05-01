@@ -69,20 +69,26 @@ def f23(x):
     for i in x:
         if i not in y:
             y.append(i)
-    print(y)
 
     #Удаление дубликатов в 1 и 2 строке
     for column in y:
         if column[0] == column[1]:
             del column[1]
-    print(y)
-
-    for column in y:
-        if column[0] == '' or column[1] == '' or column[2] == '':
-            del column
-    print(y)
 
 
-    return x
+    # Удаление пустых строк
+    for line in y:
+        for str in line:
+            if str == '':
+                y.pop(y.index(line))
+                break
+
+    #Преобразование строк
+    for line in y:
+        str = line[0]
+
+
+
+    return y
 
 print(f23(persones1))
