@@ -59,7 +59,7 @@ persones2 = [
     ['+7 (861) 387-57-68', '+7 (861) 387-57-68', 'Давид Н. Шомулов!0.2', 'Да'],
     ['+7 (861) 387-57-68', '+7 (861) 387-57-68', 'Давид Н. Шомулов!0.2', 'Да'],
     ['', '', '', ''],
-    ['+ 7 (250) 080-82-88', '+7 (250) 080-82-88', 'Рамиль Е. Цедин!0.7', 'Да'],
+    ['+7 (250) 080-82-88', '+7 (250) 080-82-88', 'Рамиль Е. Цедин!0.7', 'Да'],
     ['+7 (861) 387-57-68', '+7 (861) 387-57-68', 'Давид Н. Шомулов!0.2', 'Да'],
 ]
 
@@ -85,6 +85,7 @@ def f23(x):
 
     #Преобразование строк
     for line in y:
+        new = ''
         str = line[0]
         line[0] = str[9:] #Обрезание первых строк номера
         procent = line[1]
@@ -95,12 +96,22 @@ def f23(x):
             line[2] = '0'
         elif yesNo == 'Да':
             line[2] = '1'
-        name[1:name.index(' '):]
-        line.append(name)
+        for i in name: #Работа со строкой для формата
+            if i == ' ':
+                new = name[0:1]
+                newStr = name[name.index(i):len(name)]
+                new += '.' + name[name.index(i):name.index(i)+3]
+                newStr = newStr[newStr.index(i)+4:len(newStr)-4]
+                new += ' ' + newStr
 
+        line.append(new)
 
+    #Сортировка строк
+    def custom_key(line):
+        return line[1]
+
+    y = sorted(y, key=lambda x: x[2], reverse=True)
+    y.sort()
 
 
     return y
-
-print(f23(persones1))
