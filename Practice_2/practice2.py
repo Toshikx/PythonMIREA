@@ -44,8 +44,8 @@ def f221(number):
 #working transcoder in format of task
 
 persones1 = [
-    ['+7 (172) 581-48-63', '+7 (172) 581-48-63', 'Мирон К. Гетук!0.6', 'Нет'],
-    ['+7 (223) 002-48-29', '+7 (223) 002-48-29', 'Арсений Ш. Шавунов!0.2', 'Да'],
+    ['+7 (172) 581-48-63', '+7 (172) 581-48-63', 'Мирон К. Гетук!0.0', 'Нет'],
+    ['+7 (223) 002-48-29', '+7 (223) 002-48-29', 'Арсений Ш. Шавунов!0.0', 'Да'],
     ['', '', '', ''],
     ['+7 (223) 002-48-29', '+7 (223) 002-48-29', 'Арсений Ш. Шавунов!0.2', 'Да'],
     ['+7 (223) 002-48-29', '+7 (223) 002-48-29', 'Арсений Ш. Шавунов!0.2', 'Да'],
@@ -61,6 +61,13 @@ persones2 = [
     ['', '', '', ''],
     ['+7 (250) 080-82-88', '+7 (250) 080-82-88', 'Рамиль Е. Цедин!0.7', 'Да'],
     ['+7 (861) 387-57-68', '+7 (861) 387-57-68', 'Давид Н. Шомулов!0.2', 'Да'],
+]
+
+persones3 = [
+    ['+7 (861) 387-57-68', '+7 (861) 387-57-68', 'Давид Н. Шомулов!0.2', 'Да'],
+    [None, None, None, None],
+    ['+7 (250) 080-82-88', '+7 (250) 080-82-88', 'Рамиль Е. Цедин!0.7', 'Да'],
+    ['+7 (861) 387-57-68', '+7 (861) 387-57-68', 'Давид Н. Шомулов!0.2', 'Да']
 ]
 
 def f23(x):
@@ -79,7 +86,7 @@ def f23(x):
     # Удаление пустых строк
     for line in y:
         for str in line:
-            if str == '':
+            if str == None:
                 y.pop(y.index(line))
                 break
 
@@ -89,9 +96,14 @@ def f23(x):
         str = line[0]
         line[0] = str[9:] #Обрезание первых строк номера
         procent = line[1]
+        procent = procent[-1: len(procent)]
         name = line[1]
         yesNo = line[2]
-        line[1] = procent[-1: len(procent)] + '0%'
+        if procent == '0':
+            line[1] = '0%'
+        else:
+            line[1] = procent[-1: len(procent)] + '0%'
+
         if yesNo == 'Нет':
             line[2] = '0'
         elif yesNo == 'Да':
@@ -100,16 +112,13 @@ def f23(x):
             if i == ' ':
                 new = name[0:1]
                 newStr = name[name.index(i):len(name)]
-                new += '.' + name[name.index(i):name.index(i)+3]
+                new += '.' + name[name.index(i)+1:name.index(i)+3]
                 newStr = newStr[newStr.index(i)+4:len(newStr)-4]
                 new += ' ' + newStr
 
         line.append(new)
 
     #Сортировка строк
-    def custom_key(line):
-        return line[1]
-
     y = sorted(y, key=lambda x: x[2], reverse=True)
     y.sort()
 
